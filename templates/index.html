@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Master - V2</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#" @click="currentView = 'home'">
+                    <i class="bi bi-mortarboard-fill"></i> Quiz Master
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item" v-if="!isLoggedIn">
+                            <a class="nav-link" href="#" @click="currentView = 'login'">Login</a>
+                        </li>
+                        <li class="nav-item" v-if="!isLoggedIn">
+                            <a class="nav-link" href="#" @click="currentView = 'register'">Register</a>
+                        </li>
+                        <li class="nav-item dropdown" v-if="isLoggedIn && user">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle"></i> <span v-text="user.full_name"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" @click="currentView = user.role === 'admin' ? 'admin-dashboard' : 'user-dashboard'">Dashboard</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" @click="logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="container mt-4">
+            <!-- Home View -->
+            <div v-if="currentView === 'home'" class="text-center">
+                <div class="hero-section py-5">
+                    <h1 class="display-4 mb-4">Welcome to Quiz Master</h1>
+                    <p class="lead mb-4">Your ultimate quiz preparation platform</p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Get Started</h5>
+                                    <p class="card-text">Join thousands of students preparing for their exams with our comprehensive quiz system.</p>
+                                    <div v-if="!isLoggedIn">
+                                        <button class="btn btn-primary me-3" @click="currentView = 'register'">Register Now</button>
+                                        <button class="btn btn-outline-primary" @click="currentView = 'login'">Login</button>
+                                    </div>
+                                    <div v-else>
+                                        <button class="btn btn-primary" @click="currentView = user.role === 'admin' ? 'admin-dashboard' : 'user-dashboard'">Go to Dashboard</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Component -->
+            <login-component v-if="currentView === 'login'" @login-success="onLoginSuccess" @switch-to-register="currentView = 'register'"></login-component>
+
+            <!-- Register Component -->
+            <register-component v-if="currentView === 'register'" @register-success="onRegisterSuccess" @switch-to-login="currentView = 'login'"></register-component>
+
+            <!-- Admin Dashboard -->
+            <admin-dashboard v-if="currentView === 'admin-dashboard' && user && user.role === 'admin'" @switch-view="switchView"></admin-dashboard>
+
+            <!-- User Dashboard -->
+            <user-dashboard v-if="currentView === 'user-dashboard' && user && user.role === 'user'" @switch-view="switchView"></user-dashboard>
+
+            <!-- Subject Manager -->
+            <subject-manager v-if="currentView === 'subjects'" @switch-view="switchView"></subject-manager>
+
+            <!-- Chapter Manager -->
+            <chapter-manager v-if="currentView === 'chapters'" :subject-id="selectedSubjectId" @switch-view="switchView"></chapter-manager>
+
+            <!-- Quiz Manager -->
+            <quiz-manager v-if="currentView === 'quiz-manager'" :chapter-id="selectedChapterId" @switch-view="switchView"></quiz-manager>
+
+            <!-- Quiz Attempt -->
+            <quiz-attempt v-if="currentView === 'quiz-attempt'" :quiz-id="selectedQuizId" @quiz-completed="onQuizCompleted"></quiz-attempt>
+
+            <!-- Quiz History -->
+            <quiz-history v-if="currentView === 'quiz-history'"></quiz-history>
+        </main>
+    </div>
+
+    <!-- Vue.js and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Vue Components -->
+    <script src="/static/components/LoginComponent.vue" type="text/x-template"></script>
+    <script src="/static/components/RegisterComponent.vue" type="text/x-template"></script>
+    <script src="/static/components/AdminDashboard.vue" type="text/x-template"></script>
+    <script src="/static/components/UserDashboard.vue" type="text/x-template"></script>
+    <script src="/static/components/SubjectManager.vue" type="text/x-template"></script>
+    <script src="/static/components/ChapterManager.vue" type="text/x-template"></script>
+    <script src="/static/components/QuizManager.vue" type="text/x-template"></script>
+    <script src="/static/components/QuizAttempt.vue" type="text/x-template"></script>
+    <script src="/static/components/QuizHistory.vue" type="text/x-template"></script>
+
+    <!-- Main App JS -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
