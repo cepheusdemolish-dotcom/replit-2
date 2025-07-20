@@ -67,32 +67,43 @@
                 </div>
             </div>
 
-            <!-- Login Component -->
-            <login-component v-if="currentView === 'login'" @login-success="onLoginSuccess" @switch-to-register="currentView = 'register'"></login-component>
+            <!-- Loading screen while components load -->
+            <div v-if="!componentsLoaded" class="text-center py-5">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2">Loading components...</p>
+            </div>
 
-            <!-- Register Component -->
-            <register-component v-if="currentView === 'register'" @register-success="onRegisterSuccess" @switch-to-login="currentView = 'login'"></register-component>
+            <!-- Components (only show when loaded) -->
+            <div v-if="componentsLoaded">
+                <!-- Login Component -->
+                <login-component v-if="currentView === 'login'" @login-success="onLoginSuccess" @switch-to-register="currentView = 'register'"></login-component>
 
-            <!-- Admin Dashboard -->
-            <admin-dashboard v-if="currentView === 'admin-dashboard' && user && user.role === 'admin'" @switch-view="switchView"></admin-dashboard>
+                <!-- Register Component -->
+                <register-component v-if="currentView === 'register'" @register-success="onRegisterSuccess" @switch-to-login="currentView = 'login'"></register-component>
 
-            <!-- User Dashboard -->
-            <user-dashboard v-if="currentView === 'user-dashboard' && user && user.role === 'user'" @switch-view="switchView"></user-dashboard>
+                <!-- Admin Dashboard -->
+                <admin-dashboard v-if="currentView === 'admin-dashboard' && user && user.role === 'admin'" @switch-view="switchView"></admin-dashboard>
 
-            <!-- Subject Manager -->
-            <subject-manager v-if="currentView === 'subjects'" @switch-view="switchView"></subject-manager>
+                <!-- User Dashboard -->
+                <user-dashboard v-if="currentView === 'user-dashboard' && user && user.role === 'user'" @switch-view="switchView"></user-dashboard>
 
-            <!-- Chapter Manager -->
-            <chapter-manager v-if="currentView === 'chapters'" :subject-id="selectedSubjectId" @switch-view="switchView"></chapter-manager>
+                <!-- Subject Manager -->
+                <subject-manager v-if="currentView === 'subjects'" @switch-view="switchView"></subject-manager>
 
-            <!-- Quiz Manager -->
-            <quiz-manager v-if="currentView === 'quiz-manager'" :chapter-id="selectedChapterId" @switch-view="switchView"></quiz-manager>
+                <!-- Chapter Manager -->
+                <chapter-manager v-if="currentView === 'chapters'" :subject-id="selectedSubjectId" @switch-view="switchView"></chapter-manager>
 
-            <!-- Quiz Attempt -->
-            <quiz-attempt v-if="currentView === 'quiz-attempt'" :quiz-id="selectedQuizId" @quiz-completed="onQuizCompleted"></quiz-attempt>
+                <!-- Quiz Manager -->
+                <quiz-manager v-if="currentView === 'quiz-manager'" :chapter-id="selectedChapterId" @switch-view="switchView"></quiz-manager>
 
-            <!-- Quiz History -->
-            <quiz-history v-if="currentView === 'quiz-history'"></quiz-history>
+                <!-- Quiz Attempt -->
+                <quiz-attempt v-if="currentView === 'quiz-attempt'" :quiz-id="selectedQuizId" @quiz-completed="onQuizCompleted"></quiz-attempt>
+
+                <!-- Quiz History -->
+                <quiz-history v-if="currentView === 'quiz-history'"></quiz-history>
+            </div>
         </main>
     </div>
 
