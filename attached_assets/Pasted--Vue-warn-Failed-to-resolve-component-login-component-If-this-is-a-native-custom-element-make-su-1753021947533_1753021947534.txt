@@ -1,0 +1,380 @@
+[Vue warn]: Failed to resolve component: login-component
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:58
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7510
+run @ vue.global.js:601
+setupRenderEffect @ vue.global.js:7645
+mountComponent @ vue.global.js:7419
+processComponent @ vue.global.js:7372
+patch @ vue.global.js:6899
+render @ vue.global.js:8193
+mount @ vue.global.js:6159
+app.mount @ vue.global.js:12282
+(anonymous) @ app.js:110
+vue.global.js:2278  [Vue warn]: Failed to resolve component: register-component
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:59
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7510
+run @ vue.global.js:601
+setupRenderEffect @ vue.global.js:7645
+mountComponent @ vue.global.js:7419
+processComponent @ vue.global.js:7372
+patch @ vue.global.js:6899
+render @ vue.global.js:8193
+mount @ vue.global.js:6159
+app.mount @ vue.global.js:12282
+(anonymous) @ app.js:110
+vue.global.js:2278  [Vue warn]: Failed to resolve component: admin-dashboard
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:60
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7510
+run @ vue.global.js:601
+setupRenderEffect @ vue.global.js:7645
+mountComponent @ vue.global.js:7419
+processComponent @ vue.global.js:7372
+patch @ vue.global.js:6899
+render @ vue.global.js:8193
+mount @ vue.global.js:6159
+app.mount @ vue.global.js:12282
+(anonymous) @ app.js:110
+vue.global.js:2278  [Vue warn]: Failed to resolve component: user-dashboard
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:61
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7510
+run @ vue.global.js:601
+setupRenderEffect @ vue.global.js:7645
+mountComponent @ vue.global.js:7419
+processComponent @ vue.global.js:7372
+patch @ vue.global.js:6899
+render @ vue.global.js:8193
+mount @ vue.global.js:6159
+app.mount @ vue.global.js:12282
+(anonymous) @ app.js:110
+vue.global.js:2278  [Vue warn]: Failed to resolve component: subject-manager
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:62
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7510
+run @ vue.global.js:601
+setupRenderEffect @ vue.global.js:7645
+mountComponent @ vue.global.js:7419
+processComponent @ vue.global.js:7372
+patch @ vue.global.js:6899
+render @ vue.global.js:8193
+mount @ vue.global.js:6159
+app.mount @ vue.global.js:12282
+(anonymous) @ app.js:110
+vue.global.js:2278  [Vue warn]: Failed to resolve component: chapter-manager
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:63
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7510
+run @ vue.global.js:601
+setupRenderEffect @ vue.global.js:7645
+mountComponent @ vue.global.js:7419
+processComponent @ vue.global.js:7372
+patch @ vue.global.js:6899
+render @ vue.global.js:8193
+mount @ vue.global.js:6159
+app.mount @ vue.global.js:12282
+(anonymous) @ app.js:110
+vue.global.js:2278  [Vue warn]: Failed to resolve component: quiz-manager
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:64
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7510
+run @ vue.global.js:601
+setupRenderEffect @ vue.global.js:7645
+mountComponent @ vue.global.js:7419
+processComponent @ vue.global.js:7372
+patch @ vue.global.js:6899
+render @ vue.global.js:8193
+mount @ vue.global.js:6159
+app.mount @ vue.global.js:12282
+(anonymous) @ app.js:110
+vue.global.js:2278  [Vue warn]: Failed to resolve component: quiz-attempt
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:65
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7510
+run @ vue.global.js:601
+setupRenderEffect @ vue.global.js:7645
+mountComponent @ vue.global.js:7419
+processComponent @ vue.global.js:7372
+patch @ vue.global.js:6899
+render @ vue.global.js:8193
+mount @ vue.global.js:6159
+app.mount @ vue.global.js:12282
+(anonymous) @ app.js:110
+vue.global.js:2278  [Vue warn]: Failed to resolve component: quiz-history
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:66
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7510
+run @ vue.global.js:601
+setupRenderEffect @ vue.global.js:7645
+mountComponent @ vue.global.js:7419
+processComponent @ vue.global.js:7372
+patch @ vue.global.js:6899
+render @ vue.global.js:8193
+mount @ vue.global.js:6159
+app.mount @ vue.global.js:12282
+(anonymous) @ app.js:110
+[NEW] Explain Console errors by using Copilot in Edge: click
+         
+         to explain an error. 
+        Learn more
+        Don't show again
+index.ts-1cfd4f6d.js:1 [Long Running Recorder] Content script initialised
+index.ts-1cfd4f6d.js:3 [Long Running Recorder] Recorder disabled
+vue.global.js:2278  [Vue warn]: Failed to resolve component: login-component
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:58
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7588
+run @ vue.global.js:601
+runIfDirty @ vue.global.js:639
+callWithErrorHandling @ vue.global.js:2425
+flushJobs @ vue.global.js:2630
+Promise.then
+queueFlush @ vue.global.js:2544
+queueJob @ vue.global.js:2539
+effect.scheduler @ vue.global.js:7639
+trigger @ vue.global.js:629
+endBatch @ vue.global.js:687
+trigger @ vue.global.js:1088
+set @ vue.global.js:1371
+set @ vue.global.js:5374
+onClick @ VM393:158
+callWithErrorHandling @ vue.global.js:2425
+callWithAsyncErrorHandling @ vue.global.js:2432
+invoker @ vue.global.js:11282
+vue.global.js:2278  [Vue warn]: Failed to resolve component: register-component
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:59
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7588
+run @ vue.global.js:601
+runIfDirty @ vue.global.js:639
+callWithErrorHandling @ vue.global.js:2425
+flushJobs @ vue.global.js:2630
+Promise.then
+queueFlush @ vue.global.js:2544
+queueJob @ vue.global.js:2539
+effect.scheduler @ vue.global.js:7639
+trigger @ vue.global.js:629
+endBatch @ vue.global.js:687
+trigger @ vue.global.js:1088
+set @ vue.global.js:1371
+set @ vue.global.js:5374
+onClick @ VM393:158
+callWithErrorHandling @ vue.global.js:2425
+callWithAsyncErrorHandling @ vue.global.js:2432
+invoker @ vue.global.js:11282
+vue.global.js:2278  [Vue warn]: Failed to resolve component: admin-dashboard
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:60
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7588
+run @ vue.global.js:601
+runIfDirty @ vue.global.js:639
+callWithErrorHandling @ vue.global.js:2425
+flushJobs @ vue.global.js:2630
+Promise.then
+queueFlush @ vue.global.js:2544
+queueJob @ vue.global.js:2539
+effect.scheduler @ vue.global.js:7639
+trigger @ vue.global.js:629
+endBatch @ vue.global.js:687
+trigger @ vue.global.js:1088
+set @ vue.global.js:1371
+set @ vue.global.js:5374
+onClick @ VM393:158
+callWithErrorHandling @ vue.global.js:2425
+callWithAsyncErrorHandling @ vue.global.js:2432
+invoker @ vue.global.js:11282
+vue.global.js:2278  [Vue warn]: Failed to resolve component: user-dashboard
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:61
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7588
+run @ vue.global.js:601
+runIfDirty @ vue.global.js:639
+callWithErrorHandling @ vue.global.js:2425
+flushJobs @ vue.global.js:2630
+Promise.then
+queueFlush @ vue.global.js:2544
+queueJob @ vue.global.js:2539
+effect.scheduler @ vue.global.js:7639
+trigger @ vue.global.js:629
+endBatch @ vue.global.js:687
+trigger @ vue.global.js:1088
+set @ vue.global.js:1371
+set @ vue.global.js:5374
+onClick @ VM393:158
+callWithErrorHandling @ vue.global.js:2425
+callWithAsyncErrorHandling @ vue.global.js:2432
+invoker @ vue.global.js:11282
+vue.global.js:2278  [Vue warn]: Failed to resolve component: subject-manager
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:62
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7588
+run @ vue.global.js:601
+runIfDirty @ vue.global.js:639
+callWithErrorHandling @ vue.global.js:2425
+flushJobs @ vue.global.js:2630
+Promise.then
+queueFlush @ vue.global.js:2544
+queueJob @ vue.global.js:2539
+effect.scheduler @ vue.global.js:7639
+trigger @ vue.global.js:629
+endBatch @ vue.global.js:687
+trigger @ vue.global.js:1088
+set @ vue.global.js:1371
+set @ vue.global.js:5374
+onClick @ VM393:158
+callWithErrorHandling @ vue.global.js:2425
+callWithAsyncErrorHandling @ vue.global.js:2432
+invoker @ vue.global.js:11282
+vue.global.js:2278  [Vue warn]: Failed to resolve component: chapter-manager
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:63
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7588
+run @ vue.global.js:601
+runIfDirty @ vue.global.js:639
+callWithErrorHandling @ vue.global.js:2425
+flushJobs @ vue.global.js:2630
+Promise.then
+queueFlush @ vue.global.js:2544
+queueJob @ vue.global.js:2539
+effect.scheduler @ vue.global.js:7639
+trigger @ vue.global.js:629
+endBatch @ vue.global.js:687
+trigger @ vue.global.js:1088
+set @ vue.global.js:1371
+set @ vue.global.js:5374
+onClick @ VM393:158
+callWithErrorHandling @ vue.global.js:2425
+callWithAsyncErrorHandling @ vue.global.js:2432
+invoker @ vue.global.js:11282
+vue.global.js:2278  [Vue warn]: Failed to resolve component: quiz-manager
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:64
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7588
+run @ vue.global.js:601
+runIfDirty @ vue.global.js:639
+callWithErrorHandling @ vue.global.js:2425
+flushJobs @ vue.global.js:2630
+Promise.then
+queueFlush @ vue.global.js:2544
+queueJob @ vue.global.js:2539
+effect.scheduler @ vue.global.js:7639
+trigger @ vue.global.js:629
+endBatch @ vue.global.js:687
+trigger @ vue.global.js:1088
+set @ vue.global.js:1371
+set @ vue.global.js:5374
+onClick @ VM393:158
+callWithErrorHandling @ vue.global.js:2425
+callWithAsyncErrorHandling @ vue.global.js:2432
+invoker @ vue.global.js:11282
+vue.global.js:2278  [Vue warn]: Failed to resolve component: quiz-attempt
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>
+warn$1 @ vue.global.js:2278
+resolveAsset @ vue.global.js:5103
+resolveComponent @ vue.global.js:5065
+render @ VM393:65
+renderComponentRoot @ vue.global.js:8691
+componentUpdateFn @ vue.global.js:7588
+run @ vue.global.js:601
+runIfDirty @ vue.global.js:639
+callWithErrorHandling @ vue.global.js:2425
+flushJobs @ vue.global.js:2630
+Promise.then
+queueFlush @ vue.global.js:2544
+queueJob @ vue.global.js:2539
+effect.scheduler @ vue.global.js:7639
+trigger @ vue.global.js:629
+endBatch @ vue.global.js:687
+trigger @ vue.global.js:1088
+set @ vue.global.js:1371
+set @ vue.global.js:5374
+onClick @ VM393:158
+callWithErrorHandling @ vue.global.js:2425
+callWithAsyncErrorHandling @ vue.global.js:2432
+invoker @ vue.global.js:11282
+vue.global.js:2278  [Vue warn]: Failed to resolve component: quiz-history
+If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement. 
+  at <App>

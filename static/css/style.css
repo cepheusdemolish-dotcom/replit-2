@@ -1,269 +1,83 @@
-/* Custom styles for Quiz Master application */
+/* Quiz Master Custom Styles */
 
-/* Global styles */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    line-height: 1.6;
-}
-
-/* Hero section */
 .hero-section {
-    background: linear-gradient(135deg, rgba(13, 110, 253, 0.1), rgba(108, 117, 125, 0.1));
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
     border-radius: 10px;
+    color: white;
 }
 
-/* Quiz attempt specific styles */
-.question-container {
-    min-height: 400px;
+.modal.d-block {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.question-statement {
-    background: var(--bs-light);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--bs-primary);
-}
-
-.option-content {
-    transition: all 0.2s ease;
-    cursor: pointer;
-}
-
-.option-content:hover {
-    background-color: var(--bs-gray-100);
-    border-color: var(--bs-primary) !important;
-}
-
-.form-check-input:checked ~ .option-content {
-    background-color: var(--bs-primary-bg-subtle);
-    border-color: var(--bs-primary) !important;
-    color: var(--bs-primary);
-}
-
-/* Timer display */
-.timer-display {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-/* Question grid */
-.question-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-    gap: 5px;
-}
-
-.question-grid .btn {
-    aspect-ratio: 1;
-    font-size: 0.875rem;
-}
-
-/* Metric cards for quiz results */
-.metric-card {
-    text-align: center;
-    padding: 1rem;
-}
-
-.metric-value {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.metric-label {
-    font-size: 0.875rem;
-    color: var(--bs-gray-600);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Performance chart container */
-.card-body canvas {
-    height: 300px !important;
-}
-
-/* Sticky sidebar */
-.sticky-top {
-    top: 1rem;
-}
-
-/* Table enhancements */
-.table-hover tbody tr:hover {
-    background-color: var(--bs-gray-100);
-}
-
-/* Progress bar in tables */
-.table .progress {
-    background-color: var(--bs-gray-200);
-}
-
-/* Badge spacing */
-.badge + .badge {
-    margin-left: 0.25rem;
-}
-
-/* Card hover effects */
 .card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
 }
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Button group responsive */
-@media (max-width: 768px) {
-    .btn-group {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .btn-group .btn {
-        border-radius: var(--bs-border-radius) !important;
-        margin-bottom: 2px;
-    }
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
-/* Quiz navigation responsive */
-@media (max-width: 768px) {
-    .question-grid {
-        grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
-    }
+.badge {
+    font-size: 0.9rem;
+    padding: 0.5em 0.75em;
 }
 
-/* Loading states */
+.table th {
+    font-weight: 600;
+    border-top: none;
+}
+
 .spinner-border-sm {
     width: 1rem;
     height: 1rem;
 }
 
-/* Alert enhancements */
-.alert {
-    border: none;
-    border-radius: 8px;
+/* Loading overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
 }
 
-.alert-info {
-    background-color: rgba(13, 110, 253, 0.1);
-    color: var(--bs-info);
+/* Custom button styles */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
-.alert-success {
-    background-color: rgba(25, 135, 84, 0.1);
-    color: var(--bs-success);
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.alert-warning {
-    background-color: rgba(255, 193, 7, 0.1);
-    color: var(--bs-warning);
-}
-
-.alert-danger {
-    background-color: rgba(220, 53, 69, 0.1);
-    color: var(--bs-danger);
-}
-
-/* Modal enhancements */
-.modal-content {
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.modal-header {
-    border-bottom: 1px solid var(--bs-gray-200);
-    border-radius: 12px 12px 0 0;
-}
-
-.modal-footer {
-    border-top: 1px solid var(--bs-gray-200);
-    border-radius: 0 0 12px 12px;
-}
-
-/* Form enhancements */
-.form-control:focus,
-.form-select:focus {
-    border-color: var(--bs-primary);
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
-}
-
-/* Breadcrumb styling */
-.breadcrumb {
-    background: none;
-    padding: 0;
-    margin-bottom: 0;
-}
-
-.breadcrumb-item + .breadcrumb-item::before {
-    content: "›";
-    color: var(--bs-gray-500);
-}
-
-/* Statistics cards animation */
-@keyframes countUp {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.card-body h5 {
-    animation: countUp 0.6s ease-out;
-}
-
-/* Icon sizing */
-.fs-1 {
-    font-size: 3rem !important;
-}
-
-.fs-2 {
-    font-size: 2rem !important;
-}
-
-/* Utility classes */
-.text-decoration-none:hover {
-    text-decoration: none !important;
-}
-
-.cursor-pointer {
-    cursor: pointer;
-}
-
-/* Dark theme adjustments */
-[data-bs-theme="dark"] .question-statement {
-    background: var(--bs-gray-800);
-    color: var(--bs-gray-100);
-}
-
-[data-bs-theme="dark"] .option-content:hover {
-    background-color: var(--bs-gray-700);
-}
-
-[data-bs-theme="dark"] .form-check-input:checked ~ .option-content {
-    background-color: rgba(13, 110, 253, 0.2);
-    color: var(--bs-primary);
-}
-
-[data-bs-theme="dark"] .table-hover tbody tr:hover {
-    background-color: var(--bs-gray-800);
-}
-
-/* Print styles */
-@media print {
-    .navbar,
-    .btn,
-    .timer-display,
-    .navigation-buttons {
-        display: none !important;
+/* Responsive fixes */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 1rem;
     }
     
-    .card {
-        border: 1px solid #000 !important;
-        box-shadow: none !important;
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .table-responsive {
+        font-size: 0.9rem;
     }
 }
