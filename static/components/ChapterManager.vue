@@ -111,14 +111,34 @@ export default {
         async createChapter() {
             this.loading = true;
             this.error = '';
-            
+
+            if (!this.subjectId || !this.newChapter.name) {
+                this.error = 'Chapter name and subject are required.';
+                this.loading = false;
+                return;
+            }
+
             try {
-                await axios.post(`/api/admin/subjects/${this.subjectId}/chapters`, this.newChapter);
+                // Debug: log user and token
+                console.log('User:', localStorage.getItem('user'));
+                console.log('Token:', localStorage.getItem('token'));
+                await axios.post(`/api/chapters`, {
+                    ...this.newChapter,
+                    subject_id: this.subjectId
+                });
                 this.showCreateModal = false;
                 this.newChapter = { name: '', description: '' };
                 this.loadChapters();
             } catch (error) {
-                this.error = error.response?.data?.message || 'Failed to create chapter.';
+                if (error.response && error.response.data && error.response.data.error) {
+                    this.error = error.response.data.error;
+                } else if (error.response && error.response.data && error.response.data.message) {
+                    this.error = error.response.data.message;
+                } else {
+                    this.error = 'Failed to create chapter.';
+                }
+                // Debug: log error
+                console.error('Chapter creation error:', error.response?.data || error);
             } finally {
                 this.loading = false;
             }
@@ -126,7 +146,7 @@ export default {
         async deleteChapter(chapterId) {
             if (confirm('Are you sure you want to delete this chapter?')) {
                 try {
-                    await axios.delete(`/api/admin/chapters/${chapterId}`);
+                    await axios.delete(`/api/chapters/${chapterId}`);
                     this.loadChapters();
                 } catch (error) {
                     alert('Failed to delete chapter.');

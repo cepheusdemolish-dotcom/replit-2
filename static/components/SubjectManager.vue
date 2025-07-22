@@ -105,14 +105,34 @@ export default {
         async createSubject() {
             this.loading = true;
             this.error = '';
-            
+
+            if (!this.newSubject.name) {
+                this.error = 'Subject name is required.';
+                this.loading = false;
+                return;
+            }
+
             try {
-                await axios.post('/api/admin/subjects', this.newSubject);
+                // Debug: log user and token
+                console.log('User:', localStorage.getItem('user'));
+                console.log('Token:', localStorage.getItem('token'));
+                await axios.post('/api/subjects', {
+                    name: this.newSubject.name,
+                    description: this.newSubject.description
+                });
                 this.showCreateModal = false;
                 this.newSubject = { name: '', description: '' };
                 this.loadSubjects();
             } catch (error) {
-                this.error = error.response?.data?.message || 'Failed to create subject.';
+                if (error.response && error.response.data && error.response.data.error) {
+                    this.error = error.response.data.error;
+                } else if (error.response && error.response.data && error.response.data.message) {
+                    this.error = error.response.data.message;
+                } else {
+                    this.error = 'Failed to create subject.';
+                }
+                // Debug: log error
+                console.error('Subject creation error:', error.response?.data || error);
             } finally {
                 this.loading = false;
             }
@@ -120,7 +140,7 @@ export default {
         async deleteSubject(subjectId) {
             if (confirm('Are you sure you want to delete this subject?')) {
                 try {
-                    await axios.delete(`/api/admin/subjects/${subjectId}`);
+                    await axios.delete(`/api/subjects/${subjectId}`);
                     this.loadSubjects();
                 } catch (error) {
                     alert('Failed to delete subject.');

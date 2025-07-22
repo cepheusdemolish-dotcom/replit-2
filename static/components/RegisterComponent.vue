@@ -12,8 +12,20 @@
                             <input type="text" class="form-control" v-model="form.full_name" required>
                         </div>
                         <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" v-model="form.username" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" v-model="form.email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="qualification" class="form-label">Qualification</label>
+                            <input type="text" class="form-control" v-model="form.qualification" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dob" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" v-model="form.dob" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
@@ -45,7 +57,10 @@ export default {
         return {
             form: {
                 full_name: '',
+                username: '',
                 email: '',
+                qualification: '',
+                dob: '',
                 password: '',
                 confirm_password: ''
             },
@@ -64,14 +79,17 @@ export default {
             this.error = '';
             
             try {
-                const response = await axios.post('/api/auth/register', {
+                const response = await axios.post('/api/register', {
                     full_name: this.form.full_name,
+                    username: this.form.username,
                     email: this.form.email,
+                    qualification: this.form.qualification,
+                    dob: this.form.dob,
                     password: this.form.password
                 });
                 this.$emit('register-success', response.data.message);
             } catch (error) {
-                this.error = error.response?.data?.message || 'Registration failed. Please try again.';
+                this.error = error.response?.data?.error || error.response?.data?.message || 'Registration failed. Please try again.';
             } finally {
                 this.loading = false;
             }

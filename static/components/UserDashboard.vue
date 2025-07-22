@@ -117,9 +117,9 @@ export default {
         async loadDashboardData() {
             try {
                 const [statsResponse, subjectsResponse, scoresResponse] = await Promise.all([
-                    axios.get('/api/user/stats'),
+                    axios.get('/api/dashboard/stats'),
                     axios.get('/api/subjects'),
-                    axios.get('/api/user/recent-scores')
+                    axios.get('/api/user/scores')
                 ]);
                 
                 this.stats = statsResponse.data;

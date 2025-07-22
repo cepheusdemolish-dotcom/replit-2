@@ -28,12 +28,12 @@
                                 <td>{{ attempt.quiz_title }}</td>
                                 <td>{{ attempt.subject_name }}</td>
                                 <td>
-                                    <span class="badge" :class="getScoreBadgeClass(attempt.score)">
-                                        {{ attempt.score }}%
+                                    <span class="badge" :class="getScoreBadgeClass(attempt.percentage)">
+                                        {{ attempt.percentage }}%
                                     </span>
                                 </td>
                                 <td>{{ attempt.time_taken }} min</td>
-                                <td>{{ formatDate(attempt.completed_at) }}</td>
+                                <td>{{ formatDate(attempt.attempt_date) }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -57,7 +57,7 @@ export default {
     methods: {
         async loadHistory() {
             try {
-                const response = await axios.get('/api/user/quiz-history');
+                const response = await axios.get('/api/user/scores');
                 this.history = response.data;
             } catch (error) {
                 console.error('Failed to load quiz history:', error);

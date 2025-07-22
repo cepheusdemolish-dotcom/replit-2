@@ -49,7 +49,7 @@ export default {
             this.error = '';
             
             try {
-                const response = await axios.post('/api/auth/login', this.form);
+                const response = await axios.post('/api/login', this.form);
                 localStorage.setItem('token', response.data.access_token);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
                 this.$emit('login-success', response.data.user);

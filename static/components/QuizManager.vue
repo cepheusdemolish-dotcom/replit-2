@@ -22,9 +22,9 @@
                         <thead>
                             <tr>
                                 <th>Title</th>
-                                <th>Description</th>
+                                <th>Remarks</th>
                                 <th>Questions</th>
-                                <th>Time Limit</th>
+                                <th>Time Duration</th>
                                 <th>Created</th>
                                 <th>Actions</th>
                             </tr>
@@ -32,9 +32,9 @@
                         <tbody>
                             <tr v-for="quiz in quizzes" :key="quiz.id">
                                 <td>{{ quiz.title }}</td>
-                                <td>{{ quiz.description }}</td>
+                                <td>{{ quiz.remarks }}</td>
                                 <td>{{ quiz.question_count || 0 }}</td>
-                                <td>{{ quiz.time_limit }} min</td>
+                                <td>{{ quiz.time_duration }} min</td>
                                 <td>{{ formatDate(quiz.created_at) }}</td>
                                 <td>
                                     <button class="btn btn-sm btn-primary me-2" @click="manageQuestions(quiz.id)">
@@ -62,16 +62,30 @@
                     <div class="modal-body">
                         <form @submit.prevent="createQuiz">
                             <div class="mb-3">
+                                <label for="subject" class="form-label">Subject</label>
+                                <select class="form-control" v-model="selectedSubjectId" @change="loadChaptersForSubject" required>
+                                    <option value="" disabled>Select Subject</option>
+                                    <option v-for="subject in subjects" :key="subject.id" :value="subject.id">{{ subject.name }}</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="chapter" class="form-label">Chapter</label>
+                                <select class="form-control" v-model="newQuiz.chapter_id" required>
+                                    <option value="" disabled>Select Chapter</option>
+                                    <option v-for="chapter in chapters" :key="chapter.id" :value="chapter.id">{{ chapter.name }}</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="title" class="form-label">Quiz Title</label>
                                 <input type="text" class="form-control" v-model="newQuiz.title" required>
                             </div>
                             <div class="mb-3">
-                                <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" v-model="newQuiz.description" rows="3"></textarea>
+                                <label for="remarks" class="form-label">Remarks</label>
+                                <textarea class="form-control" v-model="newQuiz.remarks" rows="3"></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="time_limit" class="form-label">Time Limit (minutes)</label>
-                                <input type="number" class="form-control" v-model.number="newQuiz.time_limit" min="1" required>
+                                <label for="time_duration" class="form-label">Time Duration (minutes)</label>
+                                <input type="number" class="form-control" v-model.number="newQuiz.time_duration" min="1" required>
                             </div>
                             <div v-if="error" class="alert alert-danger">{{ error }}</div>
                             <button type="submit" class="btn btn-primary" :disabled="loading">
@@ -96,15 +110,23 @@ export default {
             showCreateModal: false,
             newQuiz: {
                 title: '',
-                description: '',
-                time_limit: 30
+                remarks: '',
+                time_duration: 30,
+                chapter_id: this.chapterId || ''
             },
             loading: false,
-            error: ''
+            error: '',
+            subjects: [],
+            chapters: [],
+            selectedSubjectId: ''
         };
     },
     mounted() {
         this.loadQuizzes();
+        this.loadSubjects();
+        if (this.chapterId) {
+            this.loadChaptersForChapterId(this.chapterId);
+        }
     },
     methods: {
         async loadQuizzes() {
@@ -115,17 +137,67 @@ export default {
                 console.error('Failed to load quizzes:', error);
             }
         },
+        async loadSubjects() {
+            try {
+                const response = await axios.get('/api/subjects');
+                this.subjects = response.data;
+            } catch (error) {
+                console.error('Failed to load subjects:', error);
+            }
+        },
+        async loadChaptersForSubject() {
+            if (!this.selectedSubjectId) {
+                this.chapters = [];
+                this.newQuiz.chapter_id = '';
+                return;
+            }
+            try {
+                const response = await axios.get(`/api/subjects/${this.selectedSubjectId}/chapters`);
+                this.chapters = response.data;
+                this.newQuiz.chapter_id = '';
+            } catch (error) {
+                console.error('Failed to load chapters:', error);
+            }
+        },
+        async loadChaptersForChapterId(chapterId) {
+            try {
+                const chapterResp = await axios.get(`/api/chapters/${chapterId}`);
+                const subjectId = chapterResp.data.subject_id;
+                this.selectedSubjectId = subjectId;
+                await this.loadChaptersForSubject();
+                this.newQuiz.chapter_id = chapterId;
+            } catch (error) {
+                this.chapters = [];
+            }
+        },
         async createQuiz() {
             this.loading = true;
             this.error = '';
-            
+
+            if (!this.newQuiz.title || !this.newQuiz.chapter_id || !this.newQuiz.time_duration) {
+                this.error = 'Quiz title, chapter, and time duration are required.';
+                this.loading = false;
+                return;
+            }
+
             try {
-                await axios.post(`/api/admin/chapters/${this.chapterId}/quizzes`, this.newQuiz);
+                // Debug: log user and token
+                console.log('User:', localStorage.getItem('user'));
+                console.log('Token:', localStorage.getItem('token'));
+                await axios.post(`/api/quizzes`, this.newQuiz);
                 this.showCreateModal = false;
-                this.newQuiz = { title: '', description: '', time_limit: 30 };
+                this.newQuiz = { title: '', remarks: '', time_duration: 30, chapter_id: this.chapterId || '' };
                 this.loadQuizzes();
             } catch (error) {
-                this.error = error.response?.data?.message || 'Failed to create quiz.';
+                if (error.response && error.response.data && error.response.data.error) {
+                    this.error = error.response.data.error;
+                } else if (error.response && error.response.data && error.response.data.message) {
+                    this.error = error.response.data.message;
+                } else {
+                    this.error = 'Failed to create quiz.';
+                }
+                // Debug: log error
+                console.error('Quiz creation error:', error.response?.data || error);
             } finally {
                 this.loading = false;
             }
@@ -133,7 +205,7 @@ export default {
         async deleteQuiz(quizId) {
             if (confirm('Are you sure you want to delete this quiz?')) {
                 try {
-                    await axios.delete(`/api/admin/quizzes/${quizId}`);
+                    await axios.delete(`/api/quizzes/${quizId}`);
                     this.loadQuizzes();
                 } catch (error) {
                     alert('Failed to delete quiz.');

@@ -33,7 +33,7 @@ app.config['JWT_ACCESS_TOKEN_EXPIRES'] = False
 
 # Initialize extensions
 db.init_app(app)
-CORS(app)
+CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "*"}})
 jwt = JWTManager(app)
 
 # Import routes and models
@@ -42,7 +42,6 @@ from auth import *
 
 with app.app_context():
     # Import models to ensure tables are created
-    import models
     db.create_all()
     
     # Create default admin user if not exists

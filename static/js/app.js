@@ -35,7 +35,9 @@ async function loadVueComponent(name, path) {
 }
 
 // Axios configuration
-axios.defaults.baseURL = '/api';
+
+// REMOVE or comment out this line if frontend is served by Flask:
+// axios.defaults.baseURL = 'http://127.0.0.1:5000';
 
 // Set up axios interceptor for JWT token
 axios.interceptors.request.use(
@@ -43,6 +45,11 @@ axios.interceptors.request.use(
         const token = localStorage.getItem('token');
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
+            // Debug: log token for troubleshooting
+            // console.log('JWT token attached:', token);
+        } else {
+            // Debug: warn if token is missing
+            console.warn('No JWT token found in localStorage!');
         }
         return config;
     },
@@ -50,7 +57,7 @@ axios.interceptors.request.use(
 );
 
 // Main Vue App
-const { createApp } = Vue;
+const { createApp, nextTick } = Vue;
 
 // Create the main app
 let app;
@@ -70,6 +77,14 @@ const appConfig = {
     async mounted() {
         await this.loadComponents();
         this.checkAuthStatus();
+    },
+    watch: {
+        isLoggedIn(newVal) {
+        },
+        user(newVal) {
+        },
+        currentView(newVal) {
+        }
     },
     methods: {
         async loadComponents() {
@@ -152,4 +167,5 @@ const appConfig = {
 
 // Create and mount the app
 app = createApp(appConfig);
+window.app = app; // Expose for debugging
 app.mount('#app');

@@ -27,14 +27,31 @@
                             <a class="nav-link" href="#" @click="currentView = 'register'">Register</a>
                         </li>
                         <li class="nav-item dropdown" v-if="isLoggedIn && user">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="profileDropdownBtn"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                title="Profile menu"
+                            >
                                 <i class="bi bi-person-circle"></i> <span v-text="user.full_name"></span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" @click="currentView = user.role === 'admin' ? 'admin-dashboard' : 'user-dashboard'">Dashboard</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdownBtn">
+                                <li>
+                                    <a class="dropdown-item" href="#" @click="currentView = user.role === 'admin' ? 'admin-dashboard' : 'user-dashboard'">Dashboard</a>
+                                </li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#" @click="logout">Logout</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#" @click="logout">Logout</a>
+                                </li>
                             </ul>
+                        </li>
+                        <li class="nav-item" v-if="isLoggedIn">
+                            <button class="btn btn-outline-danger ms-2" @click="logout">
+                                <i class="bi bi-box-arrow-right"></i> Logout
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -115,5 +132,15 @@
 
     <!-- Main App JS with all Vue components -->
     <script src="/static/js/app.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Wait for Vue app to mount
+    if (window.app && window.app.config && window.app.config.globalProperties) {
+        // nothing to do, Vue 3 app is mounted
+    }
+    // For Vue 3, we need to expose the app instance and use a watcher
+    // This is handled in app.js below
+});
+</script>
 </body>
 </html>
